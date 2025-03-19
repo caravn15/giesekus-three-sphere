@@ -1,0 +1,16 @@
+function [I1,I2,I3,I4] = ElementalStiffnessC1Fixed(shape,tN11,tN12,...
+    tN21,tN22,detJ,w2D)
+
+I1 = shape.t(:,:)*(tN11.*tN11.*(detJ.*w2D)) + ...
+    + shape.t(:,:)*(tN12.*tN21.*(detJ.*w2D));
+
+I2 = shape.t(:,:)*(tN11.*tN12.*(detJ.*w2D)) + ...
+    shape.t(:,:)*(tN12.*tN22.*(detJ.*w2D));
+
+I3 = shape.t(:,:)*(tN21.*tN11.*(detJ.*w2D)) + ...
+    shape.t(:,:)*(tN22.*tN21.*(detJ.*w2D));
+
+I4 = shape.t(:,:)*(tN21.*tN12.*(detJ.*w2D)) + ...
+    shape.t(:,:)*(tN22.*tN22.*(detJ.*w2D));
+
+end
